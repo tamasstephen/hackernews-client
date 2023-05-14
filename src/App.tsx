@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { topStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
+import Article from "./components/Article";
 
 function App() {
   const {
@@ -31,7 +32,9 @@ function App() {
 
   return (
     <>
-      <p>Is Loaded</p>
+      {topStories.map((story) => (
+        <Article key={story.id} {...story} />
+      ))}
     </>
   );
 }
