@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
+import NavBar from "./components/NavBar.tsx";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -10,9 +11,14 @@ const queryClient: QueryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
-    loader: loadTopStories(queryClient),
+    element: <NavBar />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+        loader: loadTopStories(queryClient),
+      },
+    ],
   },
 ]);
 

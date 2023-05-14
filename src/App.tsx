@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { getTopStories } from "./data/api/dataHandlers";
 import { topStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 
 function App() {
