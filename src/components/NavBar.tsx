@@ -95,18 +95,11 @@ export default function NavBar() {
           flexDirection: "column",
           alignItems: "center",
           width: "100%",
+          mt: { xs: "4rem", sm: "6rem" },
+          mb: { xs: "4rem", sm: "6rem" },
         }}
       >
-        <Box
-          sx={{
-            width: "75%",
-            maxWidth: "1024px",
-            mt: { xs: "4rem", sm: "6rem" },
-            mb: { xs: "4rem", sm: "6rem" },
-          }}
-        >
-          <Outlet />
-        </Box>
+        <Outlet />
       </Box>
     </>
   );
