@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { topStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
-import Article from "./components/Article";
 import ArticleList from "./components/ArticleList";
+import { Alert, CircularProgress } from "@mui/material";
 
-function App() {
+function Index() {
   const {
     data: topStoryIdArray,
     isLoading,
@@ -19,16 +19,12 @@ function App() {
     ...getTopStoriesQuery(page, topStoryIdArray ?? []),
   });
 
-  if (topStories) {
-    console.log(topStories);
-  }
-
   if (isLoading || isLoadingTopStories) {
-    return <p>Loading...</p>;
+    return <CircularProgress />;
   }
 
   if (isError || isErrorTopStories) {
-    return <p>Failed to load top stories</p>;
+    return <Alert severity="warning">Failed to load stories!</Alert>;
   }
 
   return (
@@ -38,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default Index;
