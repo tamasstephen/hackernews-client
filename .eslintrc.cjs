@@ -1,5 +1,5 @@
 module.exports = {
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2020: true, node: true, es6: true },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -12,5 +12,15 @@ module.exports = {
   plugins: ["react-refresh", "jsx-a11y", "@tanstack/query"],
   rules: {
     "react-refresh/only-export-components": "warn",
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx"],
+      },
+    },
   },
 };

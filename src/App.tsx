@@ -1,33 +1,32 @@
-import {
-  QueryClient,
-  QueryFunction,
-  QueryKey,
-  useQuery,
-} from "@tanstack/react-query";
-import { getTopStories } from "./dataHandlers/getTopStories";
-
-const topStoriesQuery = {
-  queryKey: ["topStories"],
-  queryFn: getTopStories,
-};
-
-export function loadTopStories(queryClient: QueryClient) {
-  return async function () {
-    return (
-      queryClient.getQueryData(topStoriesQuery.queryKey) ??
-      (await queryClient.fetchQuery(topStoriesQuery))
-    );
-  };
-}
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { getTopStories } from "./data/api/dataHandlers";
+import { topStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 
 function App() {
-  const { data: topStories, isLoading, isError } = useQuery(topStoriesQuery);
+  const {
+    data: topStoryIdArray,
+    isLoading,
+    isError,
+  } = useQuery({ ...topStoryIdsQuery });
+  const [page, setPage] = useState<number>(1);
+  const {
+    data: topStories,
+    isLoading: isLoadingTopStories,
+    isError: isErrorTopStories,
+  } = useQuery({
+    ...getTopStoriesQuery(page, topStoryIdArray ?? []),
+  });
 
-  if (isLoading) {
+  if (topStories) {
+    console.log(topStories);
+  }
+
+  if (isLoading || isLoadingTopStories) {
     return <p>Loading...</p>;
   }
 
-  if (isError) {
+  if (isError || isErrorTopStories) {
     return <p>Failed to load top stories</p>;
   }
 
