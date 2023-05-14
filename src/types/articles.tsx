@@ -4,6 +4,5 @@ export type Story = {
   by: string;
   time: number;
   title: string;
-  text: string;
   url: string;
 };

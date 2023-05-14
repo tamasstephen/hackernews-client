@@ -19,7 +19,8 @@ export async function getTopStories({
   }
   if (typeof queryKey[1] === "number" && Array.isArray(queryKey[2])) {
     const topStoryIds = getCurrentTopStoryIds(queryKey[1], queryKey[2]);
-    return await Promise.all(topStoryIds.map((id) => getStory(id)));
+    const topStories = await Promise.all(topStoryIds.map((id) => getStory(id)));
+    return topStories;
   }
   throw new Error("Failed to fetch top stories");
 }

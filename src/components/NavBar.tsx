@@ -97,7 +97,14 @@ export default function NavBar() {
           width: "100%",
         }}
       >
-        <Box sx={{ width: "75%", maxWidth: "1024px", mt: "8rem" }}>
+        <Box
+          sx={{
+            width: "75%",
+            maxWidth: "1024px",
+            mt: { xs: "4rem", sm: "6rem" },
+            mb: { xs: "4rem", sm: "6rem" },
+          }}
+        >
           <Outlet />
         </Box>
       </Box>

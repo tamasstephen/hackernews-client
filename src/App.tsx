@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { topStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 import Article from "./components/Article";
+import ArticleList from "./components/ArticleList";
 
 function App() {
   const {
@@ -32,9 +33,7 @@ function App() {
 
   return (
     <>
-      {topStories.map((story) => (
-        <Article key={story.id} {...story} />
-      ))}
+      <ArticleList stories={topStories ?? []} />
     </>
   );
 }
