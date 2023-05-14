@@ -5,7 +5,7 @@ export default function Article(props: Story) {
   return (
     <Card sx={{ boxShadow: "2", width: "100%" }}>
       <Link
-        href="{props.url}"
+        href={props.url}
         underline="none"
         target="_blank"
         rel="noopener"
