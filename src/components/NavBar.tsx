@@ -6,15 +6,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import MenuIcon from "@mui/icons-material/Menu";
-import {
-  Drawer,
-  IconButton,
-  ListItemButton,
-  ListItemText,
-} from "@mui/material";
+import { Drawer, IconButton } from "@mui/material";
+import DrawerItems from "./DrawerItems";
 
 const navItems = [
   {
@@ -86,36 +80,14 @@ export default function NavBar() {
               "& .MuiDrawer-paper": { boxSizing: "border-box", width: "80%" },
             }}
           >
-            <DrawerItems toggleDrawer={handleDrawerToggle} />
+            <DrawerItems
+              toggleDrawer={handleDrawerToggle}
+              navItems={navItems}
+            />
           </Drawer>
         </Box>
       </Box>
       <Outlet />
     </div>
-  );
-}
-
-function DrawerItems({ toggleDrawer }: { toggleDrawer: () => void }) {
-  return (
-    <Box
-      onClick={toggleDrawer}
-      sx={{
-        textAlign: "center",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        display: { xs: "flex", sm: "none" },
-      }}
-    >
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item.id} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
   );
 }
