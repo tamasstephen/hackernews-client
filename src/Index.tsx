@@ -3,13 +3,14 @@ import { useState } from "react";
 import { getStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 import ArticleList from "./components/ArticleList";
 import { Alert, CircularProgress, Pagination } from "@mui/material";
+import { endpoints } from "./types/types";
 
-function Index() {
+function Index({ storyIdKey }: { storyIdKey: keyof typeof endpoints }) {
   const {
     data: topStoryIdArray,
     isLoading,
     isError,
-  } = useQuery(getStoryIdsQuery("topStoryIds"));
+  } = useQuery(getStoryIdsQuery(storyIdKey));
   const [page, setPage] = useState<number>(1);
   const {
     data: topStories,

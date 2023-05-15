@@ -14,7 +14,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Index />,
+        element: <Index storyIdKey="topStoryIds" />,
+        loader: loadTopStories(queryClient),
+      },
+      {
+        path: "/new",
+        element: <Index storyIdKey="newStoryIds" />,
+        loader: loadTopStories(queryClient),
+      },
+      {
+        path: "/best",
+        element: <Index storyIdKey="bestStoryIds" />,
         loader: loadTopStories(queryClient),
       },
     ],
