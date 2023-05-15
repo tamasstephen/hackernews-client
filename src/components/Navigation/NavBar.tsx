@@ -7,8 +7,7 @@ import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Drawer, IconButton } from "@mui/material";
-import DrawerItems from "./DrawerItems";
+import { IconButton } from "@mui/material";
 import { navItems } from "../../types/navigation";
 import NavDrawer from "./NavDrawer";
 
