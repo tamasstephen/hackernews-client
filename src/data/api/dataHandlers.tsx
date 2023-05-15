@@ -1,12 +1,22 @@
 import { UseQueryOptions } from "@tanstack/react-query";
-import { Story } from "../../types/articles";
+import { Story } from "../../types/types";
+import { endpoints } from "../../types/types";
 
-export async function getTopStoryIds(): Promise<Array<number>> {
+export async function getTopStoryIds({
+  queryKey,
+}: UseQueryOptions): Promise<Array<number>> {
+  if (!queryKey || !queryKey[0] || typeof queryKey[0] !== "string") {
+    throw new Error(`Plese provide a query`);
+  }
+  const endpoint = { ...endpoints }[queryKey[0]];
+  if (!endpoint) {
+    throw new Error(`Plese provide a valid endpoint`);
+  }
   const res = await fetch(
-    "https://hacker-news.firebaseio.com/v0/topstories.json"
+    `https://hacker-news.firebaseio.com/v0/${endpoint}.json`
   );
   if (!res.ok) {
-    throw new Error("Failed to fetch top stories");
+    throw new Error("Failed to fetch stories");
   }
   return res.json();
 }
