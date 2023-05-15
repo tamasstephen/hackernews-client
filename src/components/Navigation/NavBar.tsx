@@ -8,7 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
-import { navItems } from "../../types/navigation";
+import { navItems } from "../../types/types";
 import NavDrawer from "./NavDrawer";
 
 export default function NavBar() {

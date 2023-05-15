@@ -5,7 +5,7 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { navItems } from "../../types/navigation";
+import { navItems } from "../../types/types";
 
 interface DrawerProps {
   toggleDrawer: () => void;

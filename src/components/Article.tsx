@@ -1,5 +1,5 @@
 import { Card, CardContent, Divider, Link, Typography } from "@mui/material";
-import { Story } from "../types/articles";
+import { Story } from "../types/types";
 
 export default function Article(props: Story) {
   return (

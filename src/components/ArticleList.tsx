@@ -1,5 +1,5 @@
 import { Box, List, ListItem } from "@mui/material";
-import { Story } from "../types/articles";
+import { Story } from "../types/types";
 import Article from "./Article";
 
 interface ArticleListProps {
