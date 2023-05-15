@@ -24,14 +24,17 @@ export default function Article(props: Story) {
             {props.title}
           </Typography>
           <Divider />
-          <Typography variant="body2" sx={{ pt: ".5rem", color: "grey" }}>
+          <Typography
+            variant="body2"
+            sx={{ pt: ".5rem", color: "grey", display: "inline-block", mr: 1 }}
+          >
             by{" "}
-            <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", display: "inline" }}
-            >
-              {props.by}
-            </Typography>
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{ fontWeight: "bold", display: "inline-block" }}
+          >
+            {props.by}
           </Typography>
         </CardContent>
       </Link>

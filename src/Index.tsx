@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { topStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 import ArticleList from "./components/ArticleList";
-import { Alert, CircularProgress } from "@mui/material";
+import { Alert, CircularProgress, Pagination } from "@mui/material";
 
 function Index() {
   const {
