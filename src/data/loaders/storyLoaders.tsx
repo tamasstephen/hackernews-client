@@ -1,20 +1,26 @@
 import { QueryClient } from "@tanstack/react-query";
-import { topStoryIdsQuery } from "../queries/queries";
+import { getStoryIdsQuery } from "../queries/queries";
 import { getTopStoriesQuery } from "../queries/queries";
+import { endpoints, storyKeys } from "../../types/types";
 
-export function loadTopStories(queryClient: QueryClient) {
+export function loadTopStories(
+  queryClient: QueryClient,
+  queryIdKey?: keyof typeof endpoints
+) {
   return async function () {
+    const idKey = queryIdKey ?? "topStoryIds";
     const topStoryIds =
-      queryClient.getQueryData(topStoryIdsQuery.queryKey) ??
-      (await queryClient.fetchQuery(topStoryIdsQuery));
+      queryClient.getQueryData([idKey]) ??
+      (await queryClient.fetchQuery(getStoryIdsQuery(idKey)));
 
     if (Array.isArray(topStoryIds)) {
+      const storiesQueryKey = storyKeys[idKey];
       const topStories =
         queryClient.getQueryData(
-          getTopStoriesQuery(1, topStoryIds ?? []).queryKey
+          getTopStoriesQuery(1, topStoryIds ?? [], storiesQueryKey).queryKey
         ) ??
         (await queryClient.fetchQuery(
-          getTopStoriesQuery(1, topStoryIds ?? [])
+          getTopStoriesQuery(1, topStoryIds ?? [], storiesQueryKey)
         ));
       return topStories;
     }
