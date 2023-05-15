@@ -1,7 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
 import { getStoryIdsQuery } from "../queries/queries";
 import { getTopStoriesQuery } from "../queries/queries";
-import { endpoints, storyKeys } from "../../types/types";
+import { endpoints } from "../../types/types";
 
 export function loadTopStories(
   queryClient: QueryClient,
@@ -14,7 +14,7 @@ export function loadTopStories(
       (await queryClient.fetchQuery(getStoryIdsQuery(idKey)));
 
     if (Array.isArray(topStoryIds)) {
-      const storiesQueryKey = storyKeys[idKey];
+      const storiesQueryKey = endpoints[idKey];
       const topStories =
         queryClient.getQueryData(
           getTopStoriesQuery(1, topStoryIds ?? [], storiesQueryKey).queryKey

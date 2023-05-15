@@ -35,9 +35,3 @@ export const endpoints = {
   newStoryIds: "newstories",
   bestStoryIds: "beststories",
 } as const;
-
-export const storyKeys = {
-  topStoryIds: "topStories",
-  bestStoryIds: "bestStories",
-  newStoryIds: "newStories",
-} as const;
