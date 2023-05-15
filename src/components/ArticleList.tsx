@@ -13,10 +13,11 @@ export default function ArticleList({ stories }: ArticleListProps) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        maxWidth: "1200px",
       }}
     >
       {stories.map((story) => (
-        <ListItem sx={{ width: { xs: "100%", lg: "60%" } }} key={story.id}>
+        <ListItem sx={{ width: { xs: "100%", lg: "80%" } }} key={story.id}>
           <Article {...story} />
         </ListItem>
       ))}

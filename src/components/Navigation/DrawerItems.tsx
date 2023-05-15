@@ -5,10 +5,11 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
+import { navItems } from "../../types/navigation";
 
 interface DrawerProps {
   toggleDrawer: () => void;
-  navItems: { text: string; path: string; id: string }[];
+  navItems: typeof navItems;
 }
 
 export default function DrawerItems({ toggleDrawer, navItems }: DrawerProps) {

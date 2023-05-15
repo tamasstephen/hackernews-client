@@ -9,29 +9,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Drawer, IconButton } from "@mui/material";
 import DrawerItems from "./DrawerItems";
-
-const navItems = [
-  {
-    text: "Top",
-    path: "/",
-    id: "nav-1",
-  },
-  {
-    text: "New",
-    path: "/new",
-    id: "nav-2",
-  },
-  {
-    text: "Best",
-    path: "/best",
-    id: "nav-3",
-  },
-  {
-    text: "Jobs",
-    path: "/jobs",
-    id: "nav-4",
-  },
-];
+import { navItems } from "../../types/navigation";
+import NavDrawer from "./NavDrawer";
 
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -47,7 +26,11 @@ export default function NavBar() {
         <Box sx={{ display: "flex" }}>
           <AppBar component="nav">
             <Toolbar>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Typography
+                variant="h1"
+                component="div"
+                sx={{ flexGrow: 1, fontSize: "1.25rem", fontWeight: "bold" }}
+              >
                 Hacker News
               </Typography>
               <IconButton
@@ -68,25 +51,11 @@ export default function NavBar() {
               </Box>
             </Toolbar>
           </AppBar>
-          <Box component="nav">
-            <Drawer
-              variant="temporary"
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-              sx={{
-                display: { xs: "block", sm: "none" },
-                "& .MuiDrawer-paper": { boxSizing: "border-box", width: "80%" },
-              }}
-            >
-              <DrawerItems
-                toggleDrawer={handleDrawerToggle}
-                navItems={navItems}
-              />
-            </Drawer>
-          </Box>
+          <NavDrawer
+            navItems={navItems}
+            handleDrawerToggle={handleDrawerToggle}
+            mobileOpen={mobileOpen}
+          />
         </Box>
       </div>
       <Box
