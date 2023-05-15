@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
@@ -43,9 +43,11 @@ export default function NavBar() {
               </IconButton>
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 {navItems.map((item) => (
-                  <Button key={item.id} sx={{ color: "#fff" }}>
-                    <Typography>{item.text}</Typography>
-                  </Button>
+                  <Link to={item.path} key={item.id}>
+                    <Button sx={{ color: "#fff" }}>
+                      <Typography>{item.text}</Typography>
+                    </Button>
+                  </Link>
                 ))}
               </Box>
             </Toolbar>

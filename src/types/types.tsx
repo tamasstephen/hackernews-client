@@ -23,11 +23,6 @@ export const navItems = [
     path: "/best",
     id: "nav-3",
   },
-  {
-    text: "Jobs",
-    path: "/jobs",
-    id: "nav-4",
-  },
 ] as const;
 
 export const endpoints = {

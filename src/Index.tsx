@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 import ArticleList from "./components/ArticleList";
 import { Alert, CircularProgress, Pagination } from "@mui/material";
@@ -20,10 +20,14 @@ function Index({ storyIdKey }: { storyIdKey: keyof typeof endpoints }) {
     ...getTopStoriesQuery(page, topStoryIdArray ?? []),
   });
 
-  function handlePagination(event: React.ChangeEvent<unknown>, value: number) {
+  function handlePagination(_event: React.ChangeEvent<unknown>, value: number) {
     setPage(value);
     window.scrollTo(0, 0);
   }
+
+  useEffect(() => {
+    setPage(1);
+  }, [storyIdKey]);
 
   if (isLoading || isLoadingTopStories) {
     return <CircularProgress />;
