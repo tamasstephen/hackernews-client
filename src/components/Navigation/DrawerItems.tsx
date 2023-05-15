@@ -6,6 +6,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { navItems } from "../../types/types";
+import { Link } from "react-router-dom";
 
 interface DrawerProps {
   toggleDrawer: () => void;
@@ -27,9 +28,14 @@ export default function DrawerItems({ toggleDrawer, navItems }: DrawerProps) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.id} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
+            <Link
+              to={item.path}
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
