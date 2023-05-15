@@ -14,18 +14,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Index storyIdKey="topStoryIds" />,
+        element: <Index storyIdKey="topStoryIds" title="Top Stories" />,
         loader: loadTopStories(queryClient),
       },
       {
         path: "/new",
-        element: <Index storyIdKey="newStoryIds" />,
-        loader: loadTopStories(queryClient),
+        element: <Index storyIdKey="newStoryIds" title="New Stories" />,
+        loader: loadTopStories(queryClient, "newStoryIds"),
       },
       {
         path: "/best",
-        element: <Index storyIdKey="bestStoryIds" />,
-        loader: loadTopStories(queryClient),
+        element: <Index storyIdKey="bestStoryIds" title="Best Stories" />,
+        loader: loadTopStories(queryClient, "bestStoryIds"),
       },
     ],
   },

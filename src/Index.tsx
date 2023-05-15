@@ -2,10 +2,22 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { getStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 import ArticleList from "./components/ArticleList";
-import { Alert, CircularProgress, Grid, Pagination } from "@mui/material";
+import {
+  Alert,
+  CircularProgress,
+  Grid,
+  Pagination,
+  Typography,
+} from "@mui/material";
 import { endpoints } from "./types/types";
 
-function Index({ storyIdKey }: { storyIdKey: keyof typeof endpoints }) {
+function Index({
+  storyIdKey,
+  title,
+}: {
+  storyIdKey: keyof typeof endpoints;
+  title: string;
+}) {
   const {
     data: topStoryIdArray,
     isLoading,
@@ -17,7 +29,7 @@ function Index({ storyIdKey }: { storyIdKey: keyof typeof endpoints }) {
     isLoading: isLoadingStories,
     isError: isErrorStories,
   } = useQuery({
-    ...getTopStoriesQuery(page, topStoryIdArray ?? []),
+    ...getTopStoriesQuery(page, topStoryIdArray ?? [], endpoints[storyIdKey]),
   });
 
   useEffect(() => {
@@ -50,6 +62,12 @@ function Index({ storyIdKey }: { storyIdKey: keyof typeof endpoints }) {
 
   return (
     <>
+      <Typography
+        variant="h4"
+        sx={{ fontWeight: "bold", letterSpacing: "-.125rem", my: 2 }}
+      >
+        {title}
+      </Typography>
       <ArticleList stories={stories ?? []} />
       <Pagination
         sx={{ mt: 4 }}

@@ -16,7 +16,7 @@ export function getTopStoriesQuery(
 ) {
   const key = queryKey ?? "topstories";
   return {
-    queryKey: [`${key} _${page}`, page, storyIds],
+    queryKey: [`${key}_${page}`, page, storyIds],
     queryFn: getTopStories,
     enabled: !!storyIds,
   };
