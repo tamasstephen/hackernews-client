@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { topStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
+import { getStoryIdsQuery, getTopStoriesQuery } from "./data/queries/queries";
 import ArticleList from "./components/ArticleList";
 import { Alert, CircularProgress, Pagination } from "@mui/material";
 
@@ -9,7 +9,7 @@ function Index() {
     data: topStoryIdArray,
     isLoading,
     isError,
-  } = useQuery({ ...topStoryIdsQuery });
+  } = useQuery(getStoryIdsQuery("topStoryIds"));
   const [page, setPage] = useState<number>(1);
   const {
     data: topStories,
