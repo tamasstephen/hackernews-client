@@ -17,8 +17,9 @@ export async function getTopStories({
   if (!queryKey || !queryKey[1] || !queryKey[2]) {
     throw new Error(`Plese provide a page number and an array of story ids`);
   }
-  if (typeof queryKey[1] === "number" && Array.isArray(queryKey[2])) {
-    const topStoryIds = getCurrentTopStoryIds(queryKey[1], queryKey[2]);
+  const [_key, page, storyIds] = queryKey;
+  if (typeof page === "number" && Array.isArray(storyIds)) {
+    const topStoryIds = getCurrentTopStoryIds(page, storyIds);
     const topStories = await Promise.all(topStoryIds.map((id) => getStory(id)));
     return topStories;
   }

@@ -14,7 +14,7 @@ Lists the latest hackernews articles
 
 ## Next Steps
 
-- [ ] Pagination
+- [x] Pagination
 - [ ] SubPages
 - [ ] Add Error boundary
 - [ ] Add 404 Page

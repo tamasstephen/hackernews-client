@@ -19,6 +19,11 @@ function Index() {
     ...getTopStoriesQuery(page, topStoryIdArray ?? []),
   });
 
+  function handlePagination(event: React.ChangeEvent<unknown>, value: number) {
+    setPage(value);
+    window.scrollTo(0, 0);
+  }
+
   if (isLoading || isLoadingTopStories) {
     return <CircularProgress />;
   }
@@ -30,6 +35,16 @@ function Index() {
   return (
     <>
       <ArticleList stories={topStories ?? []} />
+      <Pagination
+        sx={{ mt: 4 }}
+        count={
+          topStoryIdArray.length % 10 === 0
+            ? topStoryIdArray.length / 10
+            : topStoryIdArray.length / 10 + 1
+        }
+        page={page}
+        onChange={handlePagination}
+      />
     </>
   );
 }
